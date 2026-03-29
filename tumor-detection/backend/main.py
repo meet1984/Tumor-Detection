@@ -70,12 +70,12 @@ app = FastAPI(
 origins = [
     "http://localhost:5173",   # Vite dev server
     "http://localhost:3000",
-    "https://your-frontend.vercel.app",  # ← update before deploying
+    "tumor-detection-frontend.vercel.app",  # ← update before deploying
 ]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # for now
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

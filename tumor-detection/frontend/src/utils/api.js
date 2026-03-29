@@ -5,7 +5,9 @@
  * Uses native fetch — no axios needed.
  */
 
-const BASE_URL = import.meta.env.VITE_API_URL
+const BASE_URL = import.meta.env.VITE_API_URL.replace(/\/$/, "")
+
+console.log("🚀 API URL:", BASE_URL)
 
 /**
  * POST /predict
@@ -15,6 +17,7 @@ const BASE_URL = import.meta.env.VITE_API_URL
  * @returns {Promise<{ prediction: string, confidence: number, processing_time_ms: number }>}
  */
 export async function predictTumor(imageFile) {
+  console.log("📤 Sending request to:", `${BASE_URL}/predict`)
   const formData = new FormData()
   formData.append('file', imageFile)
 

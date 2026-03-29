@@ -23,10 +23,17 @@ logger = logging.getLogger(__name__)
 # ─────────────────────────────────────────────
 # ⚙️  CONFIGURATION — EDIT THESE
 # ─────────────────────────────────────────────
-MODEL_PATH = os.getenv("MODEL_PATH", "tumor_model.h5")  # or .pt for PyTorch
-IMG_SIZE   = (128, 128)   # match your model's expected input size
-FRAMEWORK  = os.getenv("FRAMEWORK", "tensorflow")  # "tensorflow" | "pytorch"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
+MODEL_PATH = os.path.join(
+    BASE_DIR,
+    os.getenv("MODEL_PATH", "tumor_model.h5")
+)
+
+IMG_SIZE   = (128, 128)
+FRAMEWORK  = os.getenv("FRAMEWORK", "tensorflow")
+
+print("📂 Model path:", MODEL_PATH)
 # Class labels — edit to match your model's output order
 CLASS_LABELS = ["No Tumor", "Tumor"]  # index 0 → No Tumor, index 1 → Tumor
 
