@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.env
+*.h5
+*.pt
+*.pkl
+*.pth
+venv/
+.venv/
+dist/
+*.egg-info/
+
+# Node / Frontend
+node_modules/
+dist/
+.env.local
+.env.production
+
+# IDE
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Model files (large — store separately)
+# *.h5
+# *.pt
+# Uncomment above if you DON'T want to commit model weights

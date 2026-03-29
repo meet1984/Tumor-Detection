@@ -1,0 +1,20 @@
+# render.yaml — Render.com deployment config for the FastAPI backend
+# Place this file at the ROOT of your repo (or in backend/)
+
+services:
+  - type: web
+    name: neurascan-backend
+    env: python
+    region: oregon
+    plan: free
+    rootDir: backend
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "uvicorn main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: MODEL_PATH
+        value: tumor_model.h5       # upload your model file to backend/
+      - key: FRAMEWORK
+        value: tensorflow           # or "pytorch"
+      - key: PYTHON_VERSION
+        value: "3.11.0"
+    healthCheckPath: /health

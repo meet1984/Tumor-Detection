@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Custom Font (Clash Display via CDN) ─────────────────────── */
+@import url('https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap');
+
+/* ── CSS Variables ───────────────────────────────────────────── */
+:root {
+  --color-bg:          #0d0f12;
+  --color-surface-1:   #141719;
+  --color-surface-2:   #1c1f23;
+  --color-surface-3:   #23272c;
+  --color-border:      #2a2f36;
+  --color-accent:      #3b82f6;
+  --color-accent-glow: #60a5fa;
+  --color-danger:      #ef4444;
+  --color-safe:        #22c55e;
+  --color-text:        #e5e7eb;
+  --color-muted:       #6b7280;
+}
+
+/* ── Base Reset ──────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: 'Sora', sans-serif;
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+
+/* ── Scrollbar ───────────────────────────────────────────────── */
+::-webkit-scrollbar        { width: 6px; }
+::-webkit-scrollbar-track  { background: var(--color-surface-1); }
+::-webkit-scrollbar-thumb  { background: var(--color-border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-muted); }
+
+/* ── Selection ───────────────────────────────────────────────── */
+::selection {
+  background: rgba(59, 130, 246, 0.3);
+  color: #fff;
+}
+
+/* ── Utility Layer ───────────────────────────────────────────── */
+@layer utilities {
+  .font-display { font-family: 'Clash Display', 'Sora', sans-serif; }
+  .font-mono    { font-family: 'JetBrains Mono', monospace; }
+
+  .text-gradient-blue {
+    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 50%, #818cf8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .border-subtle {
+    border: 1px solid var(--color-border);
+  }
+
+  .glass {
+    background: rgba(28, 31, 35, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}
+
+/* ── Component Layer ─────────────────────────────────────────── */
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-accent text-white
+           font-semibold text-sm tracking-wide
+           hover:bg-accent-dim active:scale-95
+           transition-all duration-200
+           shadow-glow-blue;
+  }
+
+  .card {
+    @apply rounded-2xl border-subtle bg-surface-1 shadow-card;
+  }
+
+  .tag {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-medium
+           bg-surface-3 text-muted border border-surface-border;
+  }
+}
