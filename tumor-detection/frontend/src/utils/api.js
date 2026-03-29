@@ -5,7 +5,7 @@
  * Uses native fetch — no axios needed.
  */
 
-const BASE_URL = import.meta.env.VITE_API_URL || '/api'
+const BASE_URL = import.meta.env.VITE_API_URL
 
 /**
  * POST /predict
