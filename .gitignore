@@ -1,7 +1,0 @@
-dataset.zip
-*.zip
-*.h5
-*.pt
-*.pth
-__pycache__/
-.ipynb_checkpoints
